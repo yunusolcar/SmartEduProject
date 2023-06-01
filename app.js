@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const ejs = require('ejs');
+const pageController = require('./controllers/pageController')
 
 //Template Engine
 app.set("view engine", "ejs");
@@ -9,16 +10,9 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 //Routes
-app.get('/', (req, res) => {
-     res.status(200).render('index', {
-          page_name: "index"
-     })
-});
-app.get('/about', (req, res) => {
-     res.status(200).render('about', {
-          page_name: "about"
-     })
-});
+app.get('/', pageController.getIndexPage);
+app.get('/about', pageController.getAboutPage);
+
 //Port
 const port = 5000;
 app.listen(port, () => {
