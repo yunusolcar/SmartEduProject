@@ -1,7 +1,13 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const pageRoute = require('./routes/pageRoutes');
+
 const app = express();
-const ejs = require('ejs');
-const pageController = require('./controllers/pageController')
+
+//Connection DB
+mongoose.connect('mongodb://127.0.0.1:27017/smartEdu-db')
+     .then(() => console.log('Connected!'))
+     .catch((err) => console.log(err));
 
 //Template Engine
 app.set("view engine", "ejs");
@@ -10,8 +16,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 
 //Routes
-app.get('/', pageController.getIndexPage);
-app.get('/about', pageController.getAboutPage);
+app.use('/', pageRoute);
+//app.use('/course/courseRoute');
 
 //Port
 const port = 5000;
