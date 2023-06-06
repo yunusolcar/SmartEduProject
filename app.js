@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const pageRoute = require('./routes/pageRoute');
-const courseRoute = require('./routes/courseRoute')
-
+const courseRoute = require('./routes/courseRoute');
+const categoryRoute = require('./routes/categoryRoute');
 const app = express();
 
 //Db Connection
@@ -23,8 +23,9 @@ app.use(express.urlencoded({
 //Routes
 app.use('/', pageRoute);
 app.use('/courses', courseRoute);
+app.use('/categories', categoryRoute);
 
-/*
+/*  
 app.get('/courses', (req, res) => {
   res.status(200).render('courses', {
     page_name: "courses"
