@@ -10,8 +10,8 @@ const CourseSchema = new Schema({
      },
      description: {
           type: String,
+          required: true,
           trim: true,
-          required: true
      },
      createdAt: {
           type: Date,
@@ -30,7 +30,7 @@ const CourseSchema = new Schema({
 CourseSchema.pre('validate', function (next) {
      this.slug = slugify(this.name, {
           lower: true,
-          String: true
+          strict: true
      })
      next();
 });

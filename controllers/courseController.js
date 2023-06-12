@@ -29,20 +29,19 @@ exports.getAllCourses = async (req, res) => {
                filter = {
                     category: category._id
                }
-          };
-
+          }
           const courses = await Course.find(filter);
           const categories = await Category.find();
           res.status(200).render('courses', {
                courses,
                categories,
                page_name: 'courses'
-          })
+          });
      } catch (error) {
           res.status(400).json({
                status: 'fail',
                error,
-          })
+          });
      }
 };
 
