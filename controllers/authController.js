@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const Category = require('../models/Category');
 
 exports.createUser = async (req, res) => {
     try {
@@ -59,8 +60,10 @@ exports.getDashboardPage = async (req, res) => {
     const user = await User.findOne({
         _id: req.session.userID
     })
+    const categories = await Category.find();
     res.status(200).render('dashboard', {
         page_name: 'dashboard',
-        user
+        user,
+        categories
     })
 };
