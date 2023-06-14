@@ -28,13 +28,9 @@ exports.loginUser = async (req, res) => {
         });
         if (user) {
             bcrypt.compare(password, user.password, (err, same) => {
-                if (same) {
-                    //User Session
-                    req.session.userID = user._id;
-                    res.status(200).redirect("/users/dashboard")
-                } else {
-                    res.status(400).send("incorrect password")
-                }
+                //User Session
+                req.session.userID = user._id;
+                res.status(200).redirect("/users/dashboard")
             });
         } else {
             res.status(404).send("User not found");
@@ -60,7 +56,7 @@ exports.logoutUser = (req, res) => {
 exports.getDashboardPage = async (req, res) => {
     const user = await User.findOne({
         _id: req.session.userID
-    })
+    }).populate('courses')
     const categories = await Category.find();
     const courses = await Course.find({
         user: req.session.userID
