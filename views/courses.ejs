@@ -34,7 +34,7 @@
 							<div class="course-meta-bot">
 								<ul>
 									<li>
-										<i class="fa fa-user" aria-hidden="true"></i>teacher
+										<i class="fa fa-user" aria-hidden="true"></i> <%= courses[i].user.name %>
 									</li>
 								</ul>
 							</div>
@@ -47,11 +47,11 @@
 			<div class="col-lg-3 col-12 right-single">
 				<div class="widget-search">
 					<div class="site-search-area">
-						<form method="get" id="site-searchform" action="#">
+						<form method="GET" id="site-searchform" action="/courses">
 							<div>
-								<input class="input-text form-control" name="search-k" id="search-k"
-									placeholder="Search keywords..." type="text">
-								<input id="searchsubmit" value="Search" type="submit">
+								<input class="input-text form-control" name="search" id="search-k" placeholder="Search"
+									type="text">
+								<button id="searchsubmit" value="Search" type="submit"></button>
 							</div>
 						</form>
 					</div>
@@ -60,7 +60,7 @@
 					<h3 class="widget-title">Categories</h3>
 					<ul>
 						<% for (let i = 0; i < categories.length; i++) { %>
-						<li><a href="/courses?categories=<%=categories[i].slug %>"><%= categories[i].name%></a></li>
+						<li><a href="/courses?categories=<%=categories[i].slug%>"><%= categories[i].name%></a></li>
 						<% } %>
 					</ul>
 				</div>

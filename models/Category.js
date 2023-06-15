@@ -6,13 +6,13 @@ const CategorySchema = new Schema({
     name: {
         type: String,
         unique: true,
-        required: true
+        required: true,
     },
     slug: {
         type: String,
         unique: true
     }
-})
+});
 
 CategorySchema.pre('validate', function (next) {
     this.slug = slugify(this.name, {
@@ -20,7 +20,7 @@ CategorySchema.pre('validate', function (next) {
         strict: true
     })
     next();
-});
+})
 
 const Category = mongoose.model('Category', CategorySchema);
 module.exports = Category;
