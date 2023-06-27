@@ -10,7 +10,7 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 
 //Db Connection
-mongoose.connect('mongodb://127.0.0.1:27017/smartedu-db').
+mongoose.connect('mongodb+srv://Cluster0:Euf2xnacxofOqCxF@cluster0.xerjh0h.mongodb.net/').
 catch(error => handleError(error));
 
 //Template Engine
@@ -30,7 +30,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb://127.0.0.1:27017/smartedu-db'
+    mongoUrl: 'mongodb+srv://Cluster0:Euf2xnacxofOqCxF@cluster0.xerjh0h.mongodb.net/'
   })
 }));
 
