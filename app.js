@@ -46,7 +46,5 @@ app.use('/users', userRoute);
 
 
 //Port
-const port = 3000;
-app.listen(port, () => {
-  console.log(`App started on port ${port}`);
-});
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
