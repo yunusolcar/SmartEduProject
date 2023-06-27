@@ -10,11 +10,16 @@
     "smartedu",
     "project"
   ],
+  
   "author": "Yunus Olçar",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.22"
   },
+"repository": {
+  "type": "git",
+  "url": "git+https://github.com/yunusolcar/SmartEduProject.git"
+},
   "dependencies": {
     "bcrypt": "^5.1.0",
     "connect-mongo": "^5.0.0",
