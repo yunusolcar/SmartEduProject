@@ -10,7 +10,7 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 
 //Db Connection
-mongoose.connect('mongodb+srv://Cluster0:Euf2xnacxofOqCxF@cluster0.xerjh0h.mongodb.net/').
+mongoose.connect('mongodb+srv://Cluster2:YajedKLOxf39m5Ei@cluster0.27borat.mongodb.net/').
 catch(error => handleError(error));
 
 //Template Engine
@@ -30,7 +30,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://Cluster0:Euf2xnacxofOqCxF@cluster0.xerjh0h.mongodb.net/'
+    mongoUrl: 'mongodb+srv://Cluster2:YajedKLOxf39m5Ei@cluster0.27borat.mongodb.net/'
   })
 }));
 
