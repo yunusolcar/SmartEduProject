@@ -17,7 +17,6 @@
   "author": "Yunus Olçar",
   "license": "ISC",
   "devDependencies": {
-    "netlify-cli": "^15.7.0",
     "nodemon": "^2.0.22"
   },
   "repository": {
