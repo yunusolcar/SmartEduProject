@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+require('dotenv').config()
 const pageRoute = require('./routes/pageRoute');
 const courseRoute = require('./routes/courseRoute');
 const categoryRoute = require('./routes/categoryRoute');
@@ -10,7 +11,7 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 
 //Db Connection
-mongoose.connect('mongodb+srv://Cluster2:YajedKLOxf39m5Ei@cluster0.27borat.mongodb.net/').
+mongoose.connect(process.env.mongoUrl).
 catch(error => handleError(error));
 
 //Template Engine
@@ -30,7 +31,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb+srv://Cluster2:YajedKLOxf39m5Ei@cluster0.27borat.mongodb.net/'
+    mongoUrl: process.env.mongoUrl
   })
 }));
 
@@ -46,5 +47,5 @@ app.use('/users', userRoute);
 
 
 //Port
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

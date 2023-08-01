@@ -1,8 +1,8 @@
-const User = require('../models/User');
+const User = require('../model/User');
 const bcrypt = require('bcrypt');
 const session = require('express-session');
-const Category = require('../models/Category');
-const Course = require('../models/Course');
+const Category = require('../model/Category');
+const Course = require('../model/Course');
 
 exports.createUser = async (req, res) => {
     try {
